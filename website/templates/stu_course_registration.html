@@ -1,10 +1,10 @@
 
-{% extends "_template_student.html" %}{% block title %}Grades{% endblock %}
+{% extends "_template_base.html" %}{% block title %}Grades{% endblock %}
 
 {% block content %}
 
 <br>
-<h1 class="student-title">Courses</h1>
+<h1 class="student-title">Course Registration</h1>
 <p class="h4 student-subtitle">
   From the courses page, students can access each class's homepage, see their assignments, 
   grades, teacher contact, and more. This is also where students will go when it's
@@ -12,53 +12,49 @@
 </p>
 <h2 class="divider gradient"></h2>
 
-  <div class="container">
-    <div class="row">
-        <div class="col-lg-6 mb-4">
-            <!-- IMAGE CARD WITH TEXT, LINK, AND BUTTON -->
-            <div class="card">
-                <img class="card-img-top" src="" alt="">
-
-                <div class="card-body">
-                    <h5 class="card-title">BIO101</h5>
-                    <p class="card-text">
-                        Some quick example text to build on 
-                        the card title and make up the bulk 
-                        of the card's content.
-                    </p>
-
-                    <a href="#" class="btn btn-outline-primary btn-sm">
-                        Card link
-                    </a>
-                    <a href="#" class="btn btn-outline-secondary btn-sm">
-                        <i class="far fa-heart"></i></a>
-                </div>
-            </div>
-        </div>
-          <!-- IMAGE CARD WITH ONLY TEXT -->
-        <div class="col-lg-6 mb-4">
-          <div class="card">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">MAT111</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-          </div>
-        </div>
-        <!-- TEXT CARD WITH TITLE, SUBTITLE, AND LINK -->
-        <!-- WIDTH SPECIFIED ""style="width: 18rem;"" -->
-        <div class="col-lg-6 mb-4">
-          <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">ENG112</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
-            </div>
-          </div>
-        </div>  
-    </div>
+  <div class="container3">
+    <h4 style="background-color: aqua; padding: 5px 15px;">Open Classes</h4>
+    <form method="POST">
+      <ul style="list-style-type: none;">
+        {% for course in courses %}
+          <li style="color: #323232; font-size: 30px; padding: 5px 15px;">
+            <b>CourseTitle:</b>{{course.course_name}} <b>CourseCode:</b>{{course.course_code}} <b>Teacher:</b>{{course.teacher}}
+            <button 
+              type="submit" 
+              name="register" 
+              value="{{course.course_code}}"
+              class="button register-button" 
+              onClick="">
+                Register
+            </button>
+          </li>
+        {% endfor %}
+      </ul>
+    </form>
   </div>
+  <br>
+  <div class="row">
+    <div class="col-lg-6 mb-4">
+        <!-- IMAGE CARD WITH TEXT, LINK, AND BUTTON -->
+        <div class="card">
+            <img class="card-img-top" src="" alt="">
+            <div class="card-body">
+                <h5 class="card-title">BIO101</h5>
+                <p class="card-text">
+                    Some quick example text to build on 
+                    the card title and make up the bulk 
+                    of the card's content.
+                </p>
+                <a href="#" class="btn btn-outline-primary btn-sm">
+                    Card link
+                </a>
+                <a href="#" class="btn btn-outline-secondary btn-sm">
+                    <i class="far fa-heart"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 {% endblock %}
